@@ -9,26 +9,21 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Table(name = "estudiante")
+@Table(name = "colegio")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstudianteEntity {
+public class ColegioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEstudiante;
+    private Long idColegio;
 
-    private String rut;
     private String nombre;
-    private String email;
-    private String apellidoPrimario;
-    private String apellidoSecundario;
-    private Date fechaNacimiento;
-    private Short anioEgreso;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_colegio")
-    private ColegioEntity colegioEntity;
+    @JoinColumn(name = "id_tipo_colegio")
+    private TipoColegioEntity tipoColegioEntity;
+
 
 }

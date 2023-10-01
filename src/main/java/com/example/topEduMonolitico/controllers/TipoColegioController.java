@@ -1,7 +1,7 @@
 package com.example.topEduMonolitico.controllers;
 
-import com.example.topEduMonolitico.entities.EstudianteEntity;
-import com.example.topEduMonolitico.services.EstudianteService;
+import com.example.topEduMonolitico.entities.TipoColegioEntity;
+import com.example.topEduMonolitico.services.TipoColegioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 
 @Controller
-@RequestMapping("/estudiante")
-public class EstudianteController {
+@RequestMapping("/tipoColegio")
+public class TipoColegioController {
     @Autowired
-	EstudianteService estudianteService;
+	TipoColegioService tipoColegioService;
 
     @GetMapping("/listar")
 	public String listar(Model model) {
-    	ArrayList<EstudianteEntity>estudiantes = estudianteService.obtenerEstudiantes();
-    	/*model.addAttribute("estudiante",estudiantes);
-		return "index";*/
-		return "OK";
+    	ArrayList<TipoColegioEntity>tipoColegios = tipoColegioService.obtenerTipoColegios();
+    	model.addAttribute("tipoColegios",tipoColegios);
+		return "tipocolegio";
+		//return "OK";
 	}
 
 }
