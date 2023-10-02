@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>TOP EDUCATION</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+	<!-- CSS de Bootstrap Datepicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+	<!-- Script de jQuery y Bootstrap -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Script de Bootstrap Datepicker -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+	<!-- Script de idioma (opcional) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$('.datepicker').datepicker({
+				language: 'es'
+			});
+		});
+	</script>
+</head>
+<body>
+<header th:replace="plantilla :: header"></header>
+<div class="container">
+	<div class="card bg-ligth">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+			<form th:action="@{'/estudiante/guardar'}" th:object="${estudiante}" method="post">
+				<div class="form-group row">
+					<input type="hidden" th:field="*{idEstudiante}">
+					<label class="col-md-2" for="rut">Rut</label>
+					<input type="text"
+						   th:field="*{rut}"
+						   class="form-control-sm col-md-6"
+						   id="rut"
+						   pattern="^\d{1,8}-[0-9kK]{1}$"
+						   placeholder="RUT del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="nombre">Nombre</label>
+					<input type="text"
+						   th:field="*{nombre}"
+						   class="form-control-sm col-md-6"
+						   id="nombre"
+						   placeholder="Nombre del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="apellidoPrimario">Apellido Primario</label>
+					<input type="text"
+						   th:field="*{apellidoPrimario}"
+						   class="form-control-sm col-md-6"
+						   id="apellidoPrimario"
+						   placeholder="Primer apellido del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="apellidoSecundario">Apellido Secundario</label>
+					<input type="text"
+						   th:field="*{apellidoSecundario}"
+						   class="form-control-sm col-md-6"
+						   id="apellidoSecundario"
+						   placeholder="Segundo apellido del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="email">Email</label>
+					<input type="text"
+						   th:field="*{email}"
+						   class="form-control-sm col-md-6"
+						   id="email"
+						   pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+						   placeholder="Email del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="fechaNacimiento">Fecha Nacimiento</label>
+					<div class="col-md-6">
+						<div class="date" data-provide="datepicker">
+							<input type="text"
+								   th:field="*{fechaNacimiento}"
+								   id="fechaNacimiento"
+								   class="form-control-sm">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="anioEgreso">Año de egreso</label>
+					<input type="text"
+						   th:field="*{anioEgreso}"
+						   class="form-control-sm col-md-6"
+						   id="anioEgreso"
+						   pattern="^\d{4}$"
+						   placeholder="Año de egreso del estudiante"
+						   required>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-2" for="colegio">Colegio del estudiante</label>
+					<select
+							th:field="*{colegio}"
+							class="form-control-sm col-md-6"
+							id="colegio"
+							required>
+						<option
+								th:each="colegio:${colegios}"
+								th:value="${colegio.idColegio}"
+								th:text="${colegio.nombre}"/>
+					</select>
+				</div>
+				<div class="card-footer bg-dark">
+					<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<footer th:replace="plantilla :: footer"></footer>
+</body>
+</html>

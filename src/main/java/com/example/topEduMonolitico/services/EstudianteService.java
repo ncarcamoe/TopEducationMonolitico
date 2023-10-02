@@ -1,8 +1,8 @@
 package com.example.topEduMonolitico.services;
 
+import com.example.topEduMonolitico.entities.EstudianteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.topEduMonolitico.entities.EstudianteEntity;
 import com.example.topEduMonolitico.repositories.EstudianteRepository;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -20,8 +20,13 @@ public class EstudianteService {
         return EstudianteRepository.save(estudiante);
     }
 
-    public Optional<EstudianteEntity> obtenerPorId(Long id){
-        return EstudianteRepository.findById(id);
+    public EstudianteEntity obtenerPorId(Long id){
+        Optional<EstudianteEntity> estudianteOptional = EstudianteRepository.findById(id);
+        EstudianteEntity estudiante = new EstudianteEntity();
+        if (estudianteOptional.isPresent()) {
+            estudiante = estudianteOptional.get();
+        }
+        return estudiante;
     }
 
     public boolean eliminarEstudiante(Long id) {

@@ -23,7 +23,7 @@ public class ColegioEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_colegio")
-    private TipoColegioEntity tipoColegioEntity;
+    private TipoColegioEntity tipoColegio;
 
 
 }

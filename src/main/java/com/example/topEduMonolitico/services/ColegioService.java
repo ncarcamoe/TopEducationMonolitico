@@ -21,8 +21,13 @@ public class ColegioService {
         return ColegioRepository.save(colegio);
     }
 
-    public Optional<ColegioEntity> obtenerPorId(Long id){
-        return ColegioRepository.findById(id);
+    public ColegioEntity obtenerPorId(Long id){
+        Optional<ColegioEntity> colegioOptional = ColegioRepository.findById(id);
+        ColegioEntity colegio = new ColegioEntity();
+        if (colegioOptional.isPresent()) {
+            colegio = colegioOptional.get();
+        }
+        return colegio;
     }
 
     public boolean eliminarColegio(Long id) {

@@ -11,32 +11,44 @@
 		<h1 th:text="${titulo}"></h1>
 	</div>
 	<div class="container-sm">
-		<a class="btn btn-primary btn-sm" th:href="@{'/tipoColegio/crear'}" th:text="'Nuevo registro'" title="Crear nuevo registro"></a>
+		<a class="btn btn-primary btn-sm" th:href="@{'/estudiante/crear'}" th:text="'Nuevo registro'" title="Crear nuevo registro"></a>
 		<table class="table" >
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>
-					<th scope="col">Descripcion</th>
-					<th scope="col">Maximo cuotas</th>
+					<th scope="col">Rut</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido Primario</th>
+					<th scope="col">Apellido Secundario</th>
+					<th scope="col">Email</th>
+					<th scope="col">Fecha Nacimiento</th>
+					<th scope="col">Año Egreso</th>
+					<th scope="col">Colegio</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="tipoColegio:${tipoColegios}">
-					<th scope="row" th:text="${tipoColegio.idTipoColegio}"></th>
-					<td th:text="${tipoColegio.descripcion}"></td>
-					<td th:text="${tipoColegio.maximoCuotas}"></td>
+				<tr th:each="estudiante:${estudiantes}">
+					<th scope="row" th:text="${estudiante.idEstudiante}"></th>
+					<td th:text="${estudiante.rut}"></td>
+					<td th:text="${estudiante.nombre}"></td>
+					<td th:text="${estudiante.apellidoPrimario}"></td>
+					<td th:text="${estudiante.apellidoSecundario}"></td>
+					<td th:text="${estudiante.email}"></td>
+					<td th:text="${estudiante.fechaNacimiento}"></td>
+					<td th:text="${estudiante.anioEgreso}"></td>
+					<td th:text="${estudiante.colegio.nombre}"></td>
 					<td>
 						<a class="btn btn-success btn-sm"
-						   th:href="@{'/tipoColegio/editarPorId/' + ${tipoColegio.idTipoColegio}}"
+						   th:href="@{'/estudiante/editarPorId/' + ${estudiante.idEstudiante}}"
 						   th:text="'Editar'"
 						   title="Editar registro">
 						</a>
 					</td>
 					<td>
 						<a class="btn btn-danger btn-sm"
-						   th:href="@{'/tipoColegio/eliminarPorId/' + ${tipoColegio.idTipoColegio}}"
+						   th:href="@{'/estudiante/eliminarPorId/' + ${estudiante.idEstudiante}}"
 						   th:text="'Eliminar'"
 						   title="Eliminar registro"
 						   onclick="return confirm('¿Esta seguro que desea eliminar el registro?');">

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>TOP EDUCATION</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+	<!-- Barra -->
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#"><strong>MiLogo</strong></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- menu -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" th:href="@{'/home/index'}">Inicio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{'/tipoColegio/listar'}">Tipos Colegio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{'/colegio/listar'}">Colegios</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{'/estudiante/listar'}">Estudiantes</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Contenido -->
+	<div class="container">
+
+	</div>
+	<!-- Pie -->
+	<footer th:fragment="footer" class="bg-dark text-white text-center fixed-bottom">
+		<div class="container">
+			<p>Nicolás Cárcamo</p>
+		</div>
+	</footer>
+</body>
+</html>

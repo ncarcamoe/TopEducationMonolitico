@@ -29,6 +29,6 @@ public class EstudianteEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_colegio")
-    private ColegioEntity colegioEntity;
+    private ColegioEntity colegio;
 
 }

@@ -11,32 +11,32 @@
 		<h1 th:text="${titulo}"></h1>
 	</div>
 	<div class="container-sm">
-		<a class="btn btn-primary btn-sm" th:href="@{'/tipoColegio/crear'}" th:text="'Nuevo registro'" title="Crear nuevo registro"></a>
+		<a class="btn btn-primary btn-sm" th:href="@{'/colegio/crear'}" th:text="'Nuevo registro'" title="Crear nuevo registro"></a>
 		<table class="table" >
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>
-					<th scope="col">Descripcion</th>
-					<th scope="col">Maximo cuotas</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Tipo Colegio</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="tipoColegio:${tipoColegios}">
-					<th scope="row" th:text="${tipoColegio.idTipoColegio}"></th>
-					<td th:text="${tipoColegio.descripcion}"></td>
-					<td th:text="${tipoColegio.maximoCuotas}"></td>
+				<tr th:each="colegio:${colegios}">
+					<th scope="row" th:text="${colegio.idColegio}"></th>
+					<td th:text="${colegio.nombre}"></td>
+					<td th:text="${colegio.tipoColegio.descripcion}"></td>
 					<td>
 						<a class="btn btn-success btn-sm"
-						   th:href="@{'/tipoColegio/editarPorId/' + ${tipoColegio.idTipoColegio}}"
+						   th:href="@{'/colegio/editarPorId/' + ${colegio.idColegio}}"
 						   th:text="'Editar'"
 						   title="Editar registro">
 						</a>
 					</td>
 					<td>
 						<a class="btn btn-danger btn-sm"
-						   th:href="@{'/tipoColegio/eliminarPorId/' + ${tipoColegio.idTipoColegio}}"
+						   th:href="@{'/colegio/eliminarPorId/' + ${colegio.idColegio}}"
 						   th:text="'Eliminar'"
 						   title="Eliminar registro"
 						   onclick="return confirm('¿Esta seguro que desea eliminar el registro?');">

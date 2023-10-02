@@ -17,12 +17,17 @@ public class TipoColegioService {
         return (ArrayList<TipoColegioEntity>) TipoColegioRepository.findAll();
     }
 
-    public TipoColegioEntity guardarEstudiante(TipoColegioEntity tipoColegio){
+    public TipoColegioEntity guardarTipoColegio(TipoColegioEntity tipoColegio){
         return TipoColegioRepository.save(tipoColegio);
     }
 
-    public Optional<TipoColegioEntity> obtenerPorId(Long id){
-        return TipoColegioRepository.findById(id);
+    public TipoColegioEntity obtenerPorId(Long id){
+        Optional<TipoColegioEntity> tipoColegioOptional = TipoColegioRepository.findById(id);
+        TipoColegioEntity tipoColegio = new TipoColegioEntity();
+        if (tipoColegioOptional.isPresent()) {
+            tipoColegio = tipoColegioOptional.get();
+        }
+        return tipoColegio;
     }
 
     public boolean eliminarTipoColegio(Long id) {
@@ -33,5 +38,5 @@ public class TipoColegioService {
             return false;
         }
     }
-  
+
 }
