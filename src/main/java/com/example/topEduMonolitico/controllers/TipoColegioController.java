@@ -17,7 +17,7 @@ public class TipoColegioController {
 
     @GetMapping("/listar")
 	public String listar(Model model) {
-    	ArrayList<TipoColegioEntity>tipoColegios = tipoColegioService.obtenerTipoColegios();
+		ArrayList<TipoColegioEntity>tipoColegios = tipoColegioService.obtenerTipoColegios();
 		model.addAttribute("titulo","Listado de tipos de colegios");
 		model.addAttribute("tipoColegios",tipoColegios);
 		return "tipoColegio";
