@@ -13,8 +13,6 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-    @Autowired
-	ColegioService colegioService;
 
 	@GetMapping("/index")
     public String index(){
