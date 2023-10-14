@@ -57,7 +57,7 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-						</exclude>mvn
+						</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
