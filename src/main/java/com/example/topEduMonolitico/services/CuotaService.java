@@ -45,7 +45,10 @@ public class CuotaService {
     }
 
     public ArrayList<CuotaEntity> generarCuotas(CuotaEntity cuota, TipoColegioEntity tipoColegio) {
-        Integer arancel = generarDescuento(cuota.getArancel().getValor(),tipoColegio.getPorcDescuento());
+        Integer arancel = cuota.getArancel().getValor();
+        Integer descuento = generarDescuento(arancel,tipoColegio.getPorcDescuento());
+        descuento = descuento + descuentoPorAnio(arancel,cuota.getEstudiante().getAnioEgreso());
+        arancel = arancel - descuento;
         Integer valorCuota = dividirCuotas(arancel,cuota.getNumCuota());
         ArrayList<CuotaEntity> cuotas = new ArrayList<>();
         for (int i = 1; i <= cuota.getNumCuota(); i++) {
@@ -67,10 +70,26 @@ public class CuotaService {
     }
 
     public Integer generarDescuento(Integer valorArancel, Short descuento){
-        return (int) (valorArancel * ((100-descuento)*0.01));
+        return (int) (valorArancel * (0.01 * descuento));
     }
     public Integer dividirCuotas(Integer valorArancel, Integer cantidadCuotas){
         return valorArancel/cantidadCuotas;
+    }
+
+    public Integer descuentoPorAnio(Integer valorArancel, Short anio){
+        Calendar calendario = Calendar.getInstance();
+        Integer anioActual = calendario.get(Calendar.YEAR);
+
+        Integer diferencia = anioActual - anio;
+        Integer descuento = 0;
+        if (diferencia < 1) {
+            descuento = (int) (valorArancel * (0.01 * 15));
+        } else if (diferencia >= 1 && diferencia <= 2) {
+            descuento = (int) (valorArancel * (0.01 * 8));
+        } else if (diferencia >= 3 && diferencia <= 4) {
+            descuento = (int) (valorArancel * (0.01 * 4));
+        }
+        return descuento;
     }
   
 }
