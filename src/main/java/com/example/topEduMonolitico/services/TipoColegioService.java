@@ -30,6 +30,10 @@ public class TipoColegioService {
         return tipoColegio;
     }
 
+    public TipoColegioEntity obtenerPorIdEstudiante(Long idEstudiante){
+        return TipoColegioRepository.findByIdEstudiante(idEstudiante);
+    }
+
     public boolean eliminarTipoColegio(Long id) {
         try{
             TipoColegioRepository.deleteById(id);

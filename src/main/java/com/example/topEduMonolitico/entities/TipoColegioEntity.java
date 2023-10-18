@@ -21,5 +21,6 @@ public class TipoColegioEntity {
 
     private String descripcion;
     private Short maximoCuotas;
+    private Short porcDescuento;
 
 }

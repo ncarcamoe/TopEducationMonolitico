@@ -11,37 +11,27 @@
 		<div class="card bg-ligth">
 			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 			<div class="card-body">
-				<form th:action="@{'/tipoColegio/guardar'}" th:object="${tipoColegio}" method="post">
+				<form th:action="@{'/arancel/guardar'}" th:object="${arancel}" method="post">
 					<div class="form-group row">
-						<input type="hidden" th:field="*{idTipoColegio}">
-						<label class="col-md-2" for="descripcion">Descripcion</label>
+						<input type="hidden" th:field="*{idArancel}">
+						<label class="col-md-2" for="valor">Valor</label>
 						<input type="text"
-							   th:field="*{descripcion}"
+							   th:field="*{valor}"
 							   class="form-control-sm col-md-6"
-							   id="descripcion"
-							   placeholder="Descripcion del tipo colegio"
-							   required>
-						<small></small>
-					</div>
-					<div class="form-group row">
-						<label class="col-md-2" for="maximoCuotas">Maximo de Cuotas</label>
-						<input type="text"
-							   th:field="*{maximoCuotas}"
-							   class="form-control-sm col-md-6"
-							   id="maximoCuotas"
-							   placeholder="Cantidad maxima de cuotas (campo numerico)"
+							   id="valor"
+							   placeholder="Valor del arancel"
 							   pattern="\d+"
 							   required>
 						<small></small>
 					</div>
 					<div class="form-group row">
-						<label class="col-md-2" for="porcDescuento">Porcentaje de descuento</label>
+						<label class="col-md-2" for="anio">Año</label>
 						<input type="text"
-							   th:field="*{porcDescuento}"
+							   th:field="*{anio}"
 							   class="form-control-sm col-md-6"
-							   id="porcDescuento"
-							   placeholder="Porcentaje de descuento (campo numerico 0 - 100)"
-							   pattern="^(100|[1-9]?\d)$"
+							   id="anio"
+							   placeholder="Año de vigencia del arancel"
+							   pattern="^\d{4}$"
 							   required>
 						<small></small>
 					</div>

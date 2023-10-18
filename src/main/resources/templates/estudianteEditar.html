@@ -120,11 +120,16 @@
 				</div>
 				<div class="card-footer bg-dark">
 					<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+					<a class="btn btn-success btn-sm"
+					   th:href="@{'/cuota/buscarPorIdEstudiante/' + ${estudiante.idEstudiante}}"
+					   th:text="'Acreditar arancel'"
+					   title="Acreditar arancel ">
+					</a>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
-<footer th:replace="plantilla :: footer"></footer>
+<!--<footer th:replace="plantilla :: footer"></footer>-->
 </body>
 </html>

@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "estudiante")
@@ -30,5 +32,8 @@ public class EstudianteEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_colegio")
     private ColegioEntity colegio;
+
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
+    private Set<CuotaEntity> cuota = new HashSet<>();
 
 }

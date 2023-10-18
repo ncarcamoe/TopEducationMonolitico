@@ -18,6 +18,7 @@
 					<th scope="col">ID</th>
 					<th scope="col">Descripcion</th>
 					<th scope="col">Maximo cuotas</th>
+					<th scope="col">Porcentaje descuento</th>
 					<th scope="col">Editar</th>
 					<th scope="col">Eliminar</th>
 				</tr>
@@ -27,6 +28,7 @@
 					<th scope="row" th:text="${tipoColegio.idTipoColegio}"></th>
 					<td th:text="${tipoColegio.descripcion}"></td>
 					<td th:text="${tipoColegio.maximoCuotas}"></td>
+					<td th:text="${tipoColegio.porcDescuento}"></td>
 					<td>
 						<a class="btn btn-success btn-sm"
 						   th:href="@{'/tipoColegio/editarPorId/' + ${tipoColegio.idTipoColegio}}"
@@ -46,6 +48,6 @@
 			</tbody>
 		</table>
 	</div>
-	<footer th:replace="plantilla :: footer"></footer>
+	<!--<footer th:replace="plantilla :: footer"></footer>-->
 </body>
 </html>
